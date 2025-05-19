@@ -97,9 +97,14 @@ To run everything in a **single command**, including verbose output and structur
    ::
        pipenv run pytest -v --json-report --json-report-file=tests/conda_tests/test_report.json
 
-To generate a HTML resport run
+To generate a HTML resport run, assumes that you have ran the prior step.
    ::
        pipenv run python json_to_html.py
+
+.. image:: images/sample_test_report.jpg
+   :alt: A sample Test Run Image
+   :width: 400
+   :height: 300
 
 ------------------------
 Expected Test Outcomes
