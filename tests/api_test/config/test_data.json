@@ -1,0 +1,12 @@
+{
+    "valid_post": {
+        "title": "foo",
+        "body": "bar",
+        "userId": 1
+    },
+    "updated_post": {
+        "title": "updated",
+        "body": "bar",
+        "userId": 1
+    }
+}

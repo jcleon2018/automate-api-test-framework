@@ -8,6 +8,7 @@ requests = "*"
 pytest = "*"
 pytest-order = "*"
 pytest-json-report = "*"
+pytest-html = "*"
 
 [dev-packages]
 
