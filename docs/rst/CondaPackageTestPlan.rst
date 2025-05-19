@@ -87,7 +87,7 @@ Running Pytest Tests
 
 **Generate JSON Test Report**
    ::
-       pipenv run pytest --json-report --json-report-file=tests/conda_tests/installation_report.json
+       pipenv run pytest --json-report --json-report-file=tests/conda_tests/test_report.json
 
 -------------------------------
 One-Liner Execution for All Steps
@@ -95,8 +95,11 @@ One-Liner Execution for All Steps
 
 To run everything in a **single command**, including verbose output and structured reporting:
    ::
-       pipenv run pytest -v --json-report --json-report-file=tests/conda_tests/installation_report.json
+       pipenv run pytest -v --json-report --json-report-file=tests/conda_tests/test_report.json
 
+To generate a HTML resport run
+   ::
+       pipenv run python json_to_html.py
 
 ------------------------
 Expected Test Outcomes

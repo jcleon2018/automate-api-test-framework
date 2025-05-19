@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pytest Execution Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #2C3E50; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #3498DB; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Pytest Execution Report</h1>
+    <table>
+        <tr><th>Test Name</th><th>Outcome</th><th>Duration (s)</th></tr>
+        <tr><td>tests/conda_tests/test_cross_platform.py::test_create_conda_env[Linux]</td><td>passed</td><td>6.03</td></tr>
+<tr><td>tests/conda_tests/test_cross_platform.py::test_create_conda_env[Windows]</td><td>skipped</td><td>0.00</td></tr>
+<tr><td>tests/conda_tests/test_cross_platform.py::test_create_conda_env[Darwin]</td><td>skipped</td><td>0.00</td></tr>
+<tr><td>tests/conda_tests/test_env_creation.py::test_conda_installed</td><td>passed</td><td>0.50</td></tr>
+<tr><td>tests/conda_tests/test_error_handling.py::test_install_invalid_package</td><td>passed</td><td>3.47</td></tr>
+<tr><td>tests/conda_tests/test_logging.py::test_installation_time</td><td>passed</td><td>6.02</td></tr>
+<tr><td>tests/conda_tests/test_package_install.py::test_search_package</td><td>passed</td><td>2.32</td></tr>
+<tr><td>tests/conda_tests/test_env_creation.py::test_create_conda_environment</td><td>passed</td><td>7.13</td></tr>
+<tr><td>tests/conda_tests/test_error_handling.py::test_invalid_conda_environment_creation[env with space]</td><td>passed</td><td>1.36</td></tr>
+<tr><td>tests/conda_tests/test_error_handling.py::test_invalid_conda_environment_creation[env/name]</td><td>passed</td><td>0.61</td></tr>
+<tr><td>tests/conda_tests/test_error_handling.py::test_invalid_conda_environment_creation[env#test]</td><td>passed</td><td>0.64</td></tr>
+<tr><td>tests/conda_tests/test_package_install.py::test_install_package</td><td>passed</td><td>4.04</td></tr>
+<tr><td>tests/conda_tests/test_cross_platform.py::test_conda_inside_docker</td><td>skipped</td><td>0.00</td></tr>
+<tr><td>tests/conda_tests/test_env_creation.py::test_check_environment_exists</td><td>passed</td><td>1.90</td></tr>
+<tr><td>tests/conda_tests/test_logging.py::test_capture_installation_logs</td><td>passed</td><td>6.40</td></tr>
+<tr><td>tests/conda_tests/test_package_install.py::test_install_multiple_packages</td><td>passed</td><td>6.31</td></tr>
+<tr><td>tests/conda_tests/test_env_creation.py::test_activate_environment</td><td>passed</td><td>0.53</td></tr>
+<tr><td>tests/conda_tests/test_logging.py::test_generate_execution_report</td><td>passed</td><td>0.00</td></tr>
+<tr><td>tests/conda_tests/test_package_install.py::test_verify_package_version</td><td>passed</td><td>1.02</td></tr>
+<tr><td>tests/conda_tests/test_env_creation.py::test_deactivate_env</td><td>passed</td><td>0.56</td></tr>
+<tr><td>tests/conda_tests/test_package_install.py::test_uninstall_package</td><td>passed</td><td>4.92</td></tr>
+<tr><td>tests/conda_tests/test_env_creation.py::test_export_environment</td><td>passed</td><td>1.58</td></tr>
+<tr><td>tests/conda_tests/test_package_install.py::test_check_package_integrity</td><td>passed</td><td>0.88</td></tr>
+<tr><td>tests/conda_tests/test_env_creation.py::test_recreate_environment</td><td>passed</td><td>1.48</td></tr>
+<tr><td>tests/conda_tests/test_env_creation.py::test_clone_environment</td><td>passed</td><td>7.14</td></tr>
+<tr><td>tests/conda_tests/test_env_creation.py::test_list_environments</td><td>passed</td><td>0.88</td></tr>
+<tr><td>tests/conda_tests/test_env_creation.py::test_remove_conda_environment</td><td>passed</td><td>7.31</td></tr>
+<tr><td>tests/conda_tests/test_conda_env_switch.py::test_switch_environment[test_env1]</td><td>passed</td><td>1.45</td></tr>
+<tr><td>tests/conda_tests/test_conda_env_switch.py::test_switch_environment[test_env2]</td><td>passed</td><td>1.51</td></tr>
+<tr><td>tests/conda_tests/test_conda_env_switch.py::test_remove_conda_environment[test_env1]</td><td>passed</td><td>2.79</td></tr>
+<tr><td>tests/conda_tests/test_conda_env_switch.py::test_remove_conda_environment[test_env2]</td><td>passed</td><td>2.92</td></tr>
+
+    </table>
+</body>
+</html>
