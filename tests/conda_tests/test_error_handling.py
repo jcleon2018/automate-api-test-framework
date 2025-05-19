@@ -15,16 +15,8 @@ def test_install_invalid_package():
     assert "package not found" in stderr.lower() or "invalid" in stderr.lower(), f"Unexpected response: {stderr}"
 
 @pytest.mark.order(2)
-def test_simulate_network_failure():
-    """Test network failure during package installation."""
-    stdout, stderr = run_command("conda install numpy -y --override-channels --channel fake_channel")
-    assert "failed" in stderr.lower() or "could not find" in stderr.lower(), f"Unexpected response: {stderr}"
-
-@pytest.mark.order(3)
-def test_simulate_network_failure():
-    """Test network failure during package installation."""
-    stdout, stderr = run_command("conda install numpy -y --override-channels --channel fake_channel")
-
-    expected_errors = ["failed", "could not find", "unavailableinvalidchannel", "http 404 not found"]
-    assert any(error in stderr.lower() for error in expected_errors), f"Unexpected response: {stderr}"
-
+@pytest.mark.parametrize("invalid_env_name", INVALID_ENV_NAMES)
+def test_invalid_conda_environment_creation(invalid_env_name):
+    """Test invalid Conda environment names."""
+    stdout, stderr = run_command(CONDA_COMMANDS["create"](invalid_env_name, PYTHON_VERSION))
+    assert "error" in stderr.lower() or "invalid" in stderr.lower(), f"Conda accepted invalid env name: {invalid_env_name}"
