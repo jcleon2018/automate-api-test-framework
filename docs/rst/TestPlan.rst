@@ -1,65 +1,89 @@
-==============
-Conda Environment Automation - Test Strategy & Cases
-==============
+==========
+Test Plan
+==========
 
-**1. Environment Management**
-Intend: Validate the creation, activation, and management of Conda environments.
+This document outlines test cases for validating Conda functionality across various workflows, including cross-platform compatibility, error handling, logging, package installation, and environment management.
 
-- **Test:** Verify environment creation (``conda create --name test_env1 python=3.9 -y``).
-- **Test:** Ensure successful activation of the environment (``conda activate test_env1``).
-- **Test:** Verify exporting an environment (``conda env export --name test_env1 > environment.yml``).
-- **Test:** Recreate an environment from an export file (``conda env create -f environment.yml``).
-- **Test:** Clone an existing environment (``conda create --name test_env_clone --clone test_env1``).
-- **Test Case 6:** List and switch between multiple environments (``conda env list``).
+----------------------
+Test Files & Test Cases
+----------------------
 
-**2. Package Installation & Management**
-Intend: Validate package installation, verification, updates, and removals.
+**1. test_cross_platform.py**
+    
+    - Test: Validate environment creation across OS platforms (`conda create --name test_env python=3.9`)
+    - Test: Check consistent package versions across OS platforms (`conda list numpy`)
+    - Test: Automate Conda setup inside a containerized environment (Docker)
 
-- **Test Case 7:** Search for a package before installing (``conda search numpy``).
-- **Test Case 8:** Install a package and validate installation (``conda install numpy -y``).
-- **Test Case 9:** Install multiple packages simultaneously (``conda install pandas scikit-learn -y``).
-- **Test Case 10:** Verify installed package versions (``conda list numpy``).
-- **Test Case 11:** Uninstall a package and confirm removal (``conda uninstall numpy -y``).
-- **Test Case 12:** Check package integrity (``conda list --explicit``).
+**2. test_env_creation.py**
+    
+    - Test: Verify Conda is installed (`conda --version`)
+    - Test: Create a Conda environment (`conda create --name my_env python=3.9`)
+    - Test: Check if environment exists (`conda env list`)
+    - Test: Activate environment (`conda activate my_env`)
+    - Test: Export environment (`conda env export > environment.yml`)
+    - Test: Recreate environment (`conda env create -f environment.yml`)
+    - Test: Clone environment (`conda create --name my_env_clone --clone my_env`)
+    - Test: List available environments (`conda info --envs`)
+    - Test: Remove Conda environment (`conda remove --name my_env --all`)
 
-**3. Cross-Platform Compatibility**
-Intend: Ensure Conda commands work across Linux, Windows, and MacOS.
+**3. test_error_handling.py**
+    
+    - Test: Try activating a non-existent environment (`conda activate fake_env`)
+    - Test: Attempt installing an invalid package (`conda install invalid_package -y`)
+    - Test: Validate invalid environment names (`conda create --name env with space`)
+    - Test: Install conflicting dependencies (`conda install tensorflow pytorch`)
+    - Test: Test rollback mechanism for failed installations (`conda remove problematic-package`)
 
-- **Test:** Validate environment creation across different OS platforms.
-- **Test:** Check consistent package versions across OS platforms (``conda list numpy``).
-- **Test:** Automate Conda setup inside a containerized environment (Docker).
+**4. test_logging.py**
+    
+    - Test: Measure installation time for large packages (`conda install tensorflow`)
+    - Test: Capture installation logs (`subprocess.run(cmd, capture_output=True)`)
+    - Test: Generate a test execution report in JSON format (`pytest --json-report --json-report-file=test_report.json`)
 
-**4. Error Handling & Edge Cases**
-Intendl: Test failure scenarios and error handling robustness.
+**5. test_package_install.py**
+    
+    - Test: Search for a package (`conda search numpy`)
+    - Test: Install a package (`conda install numpy`)
+    - Test: Install multiple packages (`conda install pandas scipy`)
+    - Test: Verify installed package version (`conda list numpy`)
+    - Test: Uninstall a package (`conda remove numpy`)
+    - Test: Check package integrity (`conda verify numpy`)
 
-- **Test:** Try activating a non-existent environment (``conda activate fake_env``).
-- **Test:** Attempt installing an invalid package (``conda install invalid_package -y``).
-- **Test:** Simulate network failure during package installation.
-- **Test:** Install conflicting dependencies (``conda install tensorflow pytorch``).
-- **Test:** Test rollback mechanism for failed installations (``conda remove problematic-package``).
+**6. test_conda_env_switch.py**
+    
+    - Test: Switch between environments (`conda activate test_env1`)
+    - Test: Remove a specific environment (`conda remove --name test_env1 --all`)
 
-**5. Performance & Optimization**
-Intend: Evaluate efficiency of installations and Conda runtime performance.
+**7. test_conda_ci_cd.py**
+    
+    - Test: Automate Conda environment setup in CI/CD pipelines (GitHub Actions, Jenkins)
+    - Test: Validate Conda behavior in interactive shell (`conda activate && conda list`)
 
-- **Test:** Measure installation time for large packages (``conda install tensorflow``).
-- **Test:** Test impact of dependencies on installation speed (``conda info``).
-- **Test:** Verify automatic cleanup of unused packages (``conda clean --all``).
+----------------
+Execution Steps
+----------------
 
-**6. Security & System Integrity**
-Intend: Ensure secure package management and environment safety.
+1. **Install Dependencies:**
+   ::
+       conda install pytest pytest-order -y
 
-- **Test** Test access control when installing packages globally (admin vs. non-admin).
-- **Test:** Validate persistence of environment variables (``conda env config vars set MY_VAR=value``).
+2. **Run Tests with Logging:**
+   ::
+       pytest --capture=no --log-cli-level=INFO
 
-**7. Logging & Reporting**
-Intend: Provide structured logging and reporting for debugging and execution review.
+3. **Generate JSON Report:**
+   ::
+       pytest --json-report --json-report-file=test_report.json
 
-- **Test:** Capture installation logs (``subprocess.run(cmd, capture_output=True)``).
-- **Test:** Generate a test execution report in JSON/HTML format for clarity.
+-------------------------
+Expected Test Outcomes
+-------------------------
 
-**8. Advanced Features & CI/CD Integration**
-Intend: Validate automation and integration with DevOps workflows.
+✅ **Cross-Platform:** Ensure Conda works across Linux, Windows, and MacOS  
+✅ **Error Handling:** Validate Conda behavior in failure scenarios  
+✅ **Logging & Reporting:** Capture logs and generate execution reports  
+✅ **Package Management:** Ensure seamless package installation & removal  
+✅ **Environment Management:** Validate creation, activation, cloning, and deletion  
+✅ **CI/CD Integration:** Automate Conda workflows in DevOps pipelines  
 
-- **Test:** Automate Conda environment setup in CI/CD pipelines (GitHub Actions, Jenkins).
-- **Test:** Validate Conda behavior in interactive shell testing (``conda activate && conda list``).
 
