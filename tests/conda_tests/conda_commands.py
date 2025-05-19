@@ -29,6 +29,8 @@ CONDA_COMMANDS = {
     "check_installed": "conda --version",
     "create": lambda env, py_ver: f"conda create --name {env} python={py_ver} -y",
     "activate": lambda env: f"conda activate {env}",
+    "deactivate": lambda: "conda deactivate",  # Added deactivate command
+    "init": lambda: "conda init",  # Added init command
     "remove": lambda env: f"conda remove --name {env} --all -y",
     "clone": lambda source, target: f"conda create --name {target} --clone {source} -y",
     "update_env": lambda env: f"conda env update --name {env}",
@@ -36,7 +38,7 @@ CONDA_COMMANDS = {
     # Environment Export & Recreation
     "export": lambda env, file: f"conda env export --name {env} > {file}",
     "recreate": lambda file: f"conda env create -f {file}",
-    
+
     # Conda Cleanup & Info
     "clean_all": "conda clean --all -y",
     "info": "conda info",

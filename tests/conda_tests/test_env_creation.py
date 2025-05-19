@@ -7,7 +7,6 @@ ENV_NAME = "test_env1"
 PYTHON_VERSION = "3.9"
 CLONE_ENV_NAME = "test_env_clone"
 EXPORT_FILE = "environment.yml"
-INVALID_ENV_NAMES = ["env with space", "env/name", "env#test"]
 
 @pytest.mark.order(1)
 def test_conda_installed():
@@ -34,6 +33,12 @@ def test_activate_environment():
     """Test Conda environment activation."""
     stdout, stderr = run_command(CONDA_COMMANDS["activate"](ENV_NAME))
     assert "activate" in stderr.lower(), f"Failed to activate '{ENV_NAME}': {stderr}"
+
+@pytest.mark.order(5)
+def test_deactivate_env():
+    """Test deactivating a Conda environment."""
+    stdout, stderr = run_command(CONDA_COMMANDS["deactivate"]())
+    assert "deactivated" in stdout.lower() or not ENV_NAME in stdout.lower(), f"Failed to deactivate environment {ENV_NAME}: {stderr}"
 
 @pytest.mark.order(6)
 def test_export_environment():
