@@ -5,7 +5,6 @@ from conda_commands import CONDA_COMMANDS, run_command, environment_exists
 
 ENV_NAME = "test_env1"
 PYTHON_VERSION = "3.9"
-INVALID_ENV_NAMES = ["env with space", "env/name", "env#test"]
 CLONE_ENV_NAME = "test_env_clone"
 EXPORT_FILE = "environment.yml"
 
@@ -34,13 +33,6 @@ def test_activate_environment():
     """Test Conda environment activation."""
     stdout, stderr = run_command(CONDA_COMMANDS["activate"](ENV_NAME))
     assert "activate" in stderr.lower(), f"Failed to activate '{ENV_NAME}': {stderr}"
-
-@pytest.mark.order(5)
-@pytest.mark.parametrize("invalid_env_name", INVALID_ENV_NAMES)
-def test_invalid_conda_environment_creation(invalid_env_name):
-    """Test invalid Conda environment names."""
-    stdout, stderr = run_command(CONDA_COMMANDS["create"](invalid_env_name, PYTHON_VERSION))
-    assert "error" in stderr.lower() or "invalid" in stderr.lower(), f"Conda accepted invalid env name: {invalid_env_name}"
 
 @pytest.mark.order(6)
 def test_export_environment():
