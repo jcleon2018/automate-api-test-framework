@@ -12,48 +12,10 @@ This repository contains a **Python-based API automation testing framework** usi
 - JSON schema validation using `jsonschema`
 
 ## Directory Structure
-.
-├── Pipfile
-├── Pipfile.lock
-├── README.md
-├── docs
-│   └── rst
-│       ├── CondaPackageTestPlan.rst
-│       └── images
-│           └── sample_test_report.jpg
-├── reports
-│   ├── assets
-│   │   └── style.css
-│   └── sample_test_report.html
-└── tests
-    ├── api_test
-    │   ├── README.md
-    │   ├── config
-    │   │   ├── schemas.py
-    │   │   └── test_data.json
-    │   ├── tests
-    │   │   ├── test_comments.py
-    │   │   └── test_posts.py
-    │   └── utils
-    │       ├── __init__.py
-    │       ├── api_client.py
-    │       ├── data_loader.py
-    │       └── logger.py
-    └── conda_tests
-        ├── conda_commands.py
-        ├── json_to_html.py
-        ├── sample_test_report.html
-        ├── test_conda_env_switch.py
-        ├── test_cross_platform.py
-        ├── test_env_creation.py
-        ├── test_error_handling.py
-        ├── test_logging.py
-        └── test_package_install.py
-
-
+![Local Image](../../docs/rst/images/apitestdir.png)
 
 ## Prerequisites
-Ensure `Python 3.12+` is installed. Install dependencies using **Pipenv**:
+Ensure `Python 3.13+` is installed. Install dependencies using **Pipenv**:
 
 ```pip install pipenv
 pipenv install```
