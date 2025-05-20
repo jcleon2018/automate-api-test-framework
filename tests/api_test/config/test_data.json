@@ -1,0 +1,24 @@
+{
+    "valid_post": {
+        "title": "foo",
+        "body": "bar",
+        "userId": 1
+    },
+    "updated_post": {
+        "title": "updated",
+        "body": "bar",
+        "userId": 1
+    },
+    "valid_comment": {
+        "postId": 1,
+        "name": "Test User",
+        "email": "testuser@example.com",
+        "body": "This is a test comment."
+    },
+    "updated_comment": {
+        "postId": 1,
+        "name": "Updated User",
+        "email": "updateduser@example.com",
+        "body": "This is an updated comment."
+    }
+}
