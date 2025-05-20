@@ -1,11 +1,12 @@
 import sys
 import os
+import jsonschema
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 from api_test.utils.api_client import APIClient
 from api_test.utils.logger import logger
 from api_test.utils.data_loader import DataLoader
-
+from api_test.config.schemas import post_schema
 
 test_data = DataLoader.load_data()
 
@@ -24,6 +25,8 @@ def test_get_post():
     logger.debug(f"Response JSON: {response.json()}")
     assert response.status_code == 200
     assert "title" in response.json()
+
+    jsonschema.validate(instance=response.json(), schema=post_schema)
 
 def test_update_post():
     response = APIClient.put("posts/1", test_data["updated_post"])

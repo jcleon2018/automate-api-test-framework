@@ -9,6 +9,7 @@ pytest = "*"
 pytest-order = "*"
 pytest-json-report = "*"
 pytest-html = "*"
+jsonschema = "*"
 
 [dev-packages]
 
