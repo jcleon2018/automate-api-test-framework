@@ -15,7 +15,7 @@ This repository contains an **automated Conda package management framework**, de
 
 ## Project Structure
 
-![Directory Image](../../docs/rst/images/condateststruc.png))
+![Directory Image](../../docs/rst/images/condatestdir.png)
 
 ## Running Conda Tests
 
